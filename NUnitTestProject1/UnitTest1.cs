@@ -6,31 +6,31 @@ namespace Tests
     public class CarsWorkShop
     {
         /// <summary>
-        /// Количество денег
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі
         /// </summary>
         public int Money { get; set; }
 
         /// <summary>
-        /// Наименование услуг
+        /// РќР°РёРјРµРЅРѕРІР°РЅРёРµ СѓСЃР»СѓРі
         /// </summary>
         private Dictionary<string, Service> Services { get; set; }
 
         /// <summary>
-        /// Подсчет деталей
+        /// РџРѕРґСЃС‡РµС‚ РґРµС‚Р°Р»РµР№
         /// </summary>
         private Dictionary<string, Service> NumberDetails { get; set; }
 
         /// <summary>
-        /// Покупка новых деталей
+        /// РџРѕРєСѓРїРєР° РЅРѕРІС‹С… РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Название деталей</param>
-        /// <param name="price">Результат покупки деталей</param>
+        /// <param name="name">РќР°Р·РІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <param name="price">Р РµР·СѓР»СЊС‚Р°С‚ РїРѕРєСѓРїРєРё РґРµС‚Р°Р»РµР№</param>
         /// <returns></returns>
         public string ByuDetails(string name, int count)
         {
             if (!Services.ContainsKey(name))
             {
-                return "Такой детали не существует!";
+                return "РўР°РєРѕР№ РґРµС‚Р°Р»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!";
             }
 
             var service = Services[name];
@@ -38,7 +38,7 @@ namespace Tests
 
             if (price > Money)
             {
-                return "Недостаточно средст для покупки";
+                return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚ РґР»СЏ РїРѕРєСѓРїРєРё";
             }
             else
             {
@@ -51,16 +51,16 @@ namespace Tests
                 soldProd.Price += price;
                 NumberDetails[name] = soldProd;
 
-                return "Успех";
+                return "РЈСЃРїРµС…";
             }
 
         }
 
         /// <summary>
-        /// Доставка товара
+        /// Р”РѕСЃС‚Р°РІРєР° С‚РѕРІР°СЂР°
         /// </summary>
-        /// <param name="name">Название деталей</param>
-        /// <param name="count">Количество</param>
+        /// <param name="name">РќР°Р·РІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <param name="count">РљРѕР»РёС‡РµСЃС‚РІРѕ</param>
         public void Delivery(string name, int count)
         {
             var service = Services[name];
@@ -69,10 +69,10 @@ namespace Tests
         }
 
         /// <summary>
-        /// Добавление новых деталей
+        /// Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІС‹С… РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Название детали</param>
-        /// <param name="service">Деталь</param>
+        /// <param name="name">РќР°Р·РІР°РЅРёРµ РґРµС‚Р°Р»Рё</param>
+        /// <param name="service">Р”РµС‚Р°Р»СЊ</param>
         public void NewDetails(string name, Service service)
         {
             if (!Services.ContainsKey(name))
@@ -80,20 +80,20 @@ namespace Tests
         }
 
         /// <summary>
-        /// Подсчет проданых деталей
+        /// РџРѕРґСЃС‡РµС‚ РїСЂРѕРґР°РЅС‹С… РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Наименование деталей</param>
-        /// <returns>Количество проданых деталей</returns>
+        /// <param name="name">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <returns>РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°РЅС‹С… РґРµС‚Р°Р»РµР№</returns>
         public int CountingSoldPart(string name)
         {
             return NumberDetails[name].CoutDetails;
         }
 
         /// <summary>
-        /// Изменение цены деталей
+        /// РР·РјРµРЅРµРЅРёРµ С†РµРЅС‹ РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Наименование деталей</param>
-        /// <param name="newPrice">Новая деталей</param>
+        /// <param name="name">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <param name="newPrice">РќРѕРІР°СЏ РґРµС‚Р°Р»РµР№</param>
         public void PriceChange(string name, int newPrice)
         {
             var service = Services[name];
@@ -102,10 +102,10 @@ namespace Tests
         }
 
         /// <summary>
-        /// Подсчет суммы проданных деталей
+        /// РџРѕРґСЃС‡РµС‚ СЃСѓРјРјС‹ РїСЂРѕРґР°РЅРЅС‹С… РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Наименование деталей</param>
-        /// <returns>Общая сумма проданны деталей</returns>
+        /// <param name="name">РќР°РёРјРµРЅРѕРІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <returns>РћР±С‰Р°СЏ СЃСѓРјРјР° РїСЂРѕРґР°РЅРЅС‹ РґРµС‚Р°Р»РµР№</returns>
         public int CountingMoney(string name)
         {
             return NumberDetails[name].Price;
@@ -113,7 +113,7 @@ namespace Tests
 
 
         /// <summary>
-        /// Количество деталей на складе
+        /// РљРѕР»РёС‡РµСЃС‚РІРѕ РґРµС‚Р°Р»РµР№ РЅР° СЃРєР»Р°РґРµ
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -123,7 +123,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Удаление деталей
+        /// РЈРґР°Р»РµРЅРёРµ РґРµС‚Р°Р»РµР№
         /// </summary>
         /// <param name="name"></param>
         public void DeleteDetails(string name)
@@ -133,17 +133,17 @@ namespace Tests
         }
 
         /// <summary>
-        /// Проверка на существование деталей
+        /// РџСЂРѕРІРµСЂРєР° РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РґРµС‚Р°Р»РµР№
         /// </summary>
-        /// <param name="name">Название деталей</param>
-        /// <returns>Существует ли товар на складе</returns>
+        /// <param name="name">РќР°Р·РІР°РЅРёРµ РґРµС‚Р°Р»РµР№</param>
+        /// <returns>РЎСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё С‚РѕРІР°СЂ РЅР° СЃРєР»Р°РґРµ</returns>
         public bool ContainsDetails(string name)
         {
             return Services.ContainsKey(name);
         }
 
         /// <summary>
-        /// Cервис
+        /// CРµСЂРІРёСЃ
         /// </summary>
         public struct Service
         {
@@ -167,12 +167,12 @@ namespace Tests
                 cws.Services = new Dictionary<string, Service>();
                 cws.NumberDetails = new Dictionary<string, Service>();
                 cws.Services = new Dictionary<string, Service>();
-                cws.Services.Add("Замена двигателя", new Service { Price = 500, CoutDetails = 9 });
-                cws.Services.Add("Замена фар", new Service { Price = 100, CoutDetails = 5 });
-                cws.Services.Add("Замена руля", new Service { Price = 200, CoutDetails = 3 });
-                cws.Services.Add("Замена шин", new Service { Price = 450, CoutDetails = 4 });
-                cws.Services.Add("Замена тормозов", new Service { Price = 30, CoutDetails = 6 });
-                cws.Services.Add("Замена трансмиссии", new Service { Price = 350, CoutDetails = 7 });
+                cws.Services.Add("Р—Р°РјРµРЅР° РґРІРёРіР°С‚РµР»СЏ", new Service { Price = 500, CoutDetails = 9 });
+                cws.Services.Add("Р—Р°РјРµРЅР° С„Р°СЂ", new Service { Price = 100, CoutDetails = 5 });
+                cws.Services.Add("Р—Р°РјРµРЅР° СЂСѓР»СЏ", new Service { Price = 200, CoutDetails = 3 });
+                cws.Services.Add("Р—Р°РјРµРЅР° С€РёРЅ", new Service { Price = 450, CoutDetails = 4 });
+                cws.Services.Add("Р—Р°РјРµРЅР° С‚РѕСЂРјРѕР·РѕРІ", new Service { Price = 30, CoutDetails = 6 });
+                cws.Services.Add("Р—Р°РјРµРЅР° С‚СЂР°РЅСЃРјРёСЃСЃРёРё", new Service { Price = 350, CoutDetails = 7 });
 
                 foreach (var item in cws.Services.Keys)
                 {
@@ -185,8 +185,8 @@ namespace Tests
             public void TestByuDetails()
             {
                 Assert.AreEqual(1000, cws.Money);
-                Assert.AreEqual("Успех", cws.ByuDetails("Замена тормозов", 5));
-                Assert.AreEqual(1, cws.CountingDetails("Замена тормозов").CoutDetails);
+                Assert.AreEqual("РЈСЃРїРµС…", cws.ByuDetails("Р—Р°РјРµРЅР° С‚РѕСЂРјРѕР·РѕРІ", 5));
+                Assert.AreEqual(1, cws.CountingDetails("Р—Р°РјРµРЅР° С‚РѕСЂРјРѕР·РѕРІ").CoutDetails);
                 Assert.AreEqual(850, cws.Money);
 
             }
@@ -194,17 +194,17 @@ namespace Tests
             [Test]
             public void TestNotBuy()
             {
-                Assert.AreEqual("Такой детали не существует!", cws.ByuDetails("Замена масла", 2));
-                Assert.AreEqual("Недостаточно средст для покупки", cws.ByuDetails("Замена двигателя", 31));
+                Assert.AreEqual("РўР°РєРѕР№ РґРµС‚Р°Р»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", cws.ByuDetails("Р—Р°РјРµРЅР° РјР°СЃР»Р°", 2));
+                Assert.AreEqual("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚ РґР»СЏ РїРѕРєСѓРїРєРё", cws.ByuDetails("Р—Р°РјРµРЅР° РґРІРёРіР°С‚РµР»СЏ", 31));
             }
 
 
             [Test]
             public void TestDelivery()
             {
-                Assert.AreEqual(3, cws.CountingDetails("Замена руля").CoutDetails);
-                Assert.DoesNotThrow(() => { cws.Delivery("Замена руля", 10); });
-                Assert.AreEqual(13, cws.CountingDetails("Замена руля").CoutDetails);
+                Assert.AreEqual(3, cws.CountingDetails("Р—Р°РјРµРЅР° СЂСѓР»СЏ").CoutDetails);
+                Assert.DoesNotThrow(() => { cws.Delivery("Р—Р°РјРµРЅР° СЂСѓР»СЏ", 10); });
+                Assert.AreEqual(13, cws.CountingDetails("Р—Р°РјРµРЅР° СЂСѓР»СЏ").CoutDetails);
 
             }
 
@@ -212,43 +212,43 @@ namespace Tests
             [Test]
             public void TestDeleteDetails()
             {
-                cws.DeleteDetails("Замена фар");
-                Assert.IsFalse(cws.ContainsDetails("Замена фар"));
+                cws.DeleteDetails("Р—Р°РјРµРЅР° С„Р°СЂ");
+                Assert.IsFalse(cws.ContainsDetails("Р—Р°РјРµРЅР° С„Р°СЂ"));
             }
 
             [Test]
             public void TestPriceChange()
             {
-                Assert.AreEqual(500, cws.CountingDetails("Замена двигателя").Price);
-                Assert.DoesNotThrow(() => { cws.PriceChange("Замена двигателя", 20); });
-                Assert.AreEqual(20, cws.CountingDetails("Замена двигателя").Price);
+                Assert.AreEqual(500, cws.CountingDetails("Р—Р°РјРµРЅР° РґРІРёРіР°С‚РµР»СЏ").Price);
+                Assert.DoesNotThrow(() => { cws.PriceChange("Р—Р°РјРµРЅР° РґРІРёРіР°С‚РµР»СЏ", 20); });
+                Assert.AreEqual(20, cws.CountingDetails("Р—Р°РјРµРЅР° РґРІРёРіР°С‚РµР»СЏ").Price);
 
             }
 
             [Test]
             public void TestCountingMoney()
             {
-                cws.ByuDetails("Замена фар", 5);
-                Assert.AreEqual(500, cws.CountingMoney("Замена фар"));
+                cws.ByuDetails("Р—Р°РјРµРЅР° С„Р°СЂ", 5);
+                Assert.AreEqual(500, cws.CountingMoney("Р—Р°РјРµРЅР° С„Р°СЂ"));
             }
 
             [Test]
             public void TestCountingSoldPart()
             {
-                cws.ByuDetails("Замена фар", 5);
-                Assert.AreEqual(5, cws.CountingSoldPart("Замена фар"));
+                cws.ByuDetails("Р—Р°РјРµРЅР° С„Р°СЂ", 5);
+                Assert.AreEqual(5, cws.CountingSoldPart("Р—Р°РјРµРЅР° С„Р°СЂ"));
             }
 
 
             [Test]
             public void TestNewDetails()
             {
-                cws.NewDetails("Замена КПП", new Service { Price = 20, CoutDetails = 50 });
-                Assert.IsTrue(cws.ContainsDetails("Замена КПП"));
+                cws.NewDetails("Р—Р°РјРµРЅР° РљРџРџ", new Service { Price = 20, CoutDetails = 50 });
+                Assert.IsTrue(cws.ContainsDetails("Р—Р°РјРµРЅР° РљРџРџ"));
 
             }
 
-        
+         
         }
     }
 }
