@@ -247,7 +247,7 @@ namespace Tests
                 Assert.IsTrue(cws.ContainsDetails("Замена КПП"));
 
             }
-       
+        
         
         }
     }
