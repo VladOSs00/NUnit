@@ -1,1 +1,10 @@
-version: '1.0.{build}'
+ОС: Visual Studio 2017
+
+configuration: Debug
+
+before_build:
+ - nuget restore
+
+build:
+  verbosity: minimal
+  publish_wap: true
