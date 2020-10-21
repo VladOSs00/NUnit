@@ -3,4 +3,4 @@ os: Visual Studio 2017
 configuration: Debug
 
 before_build:
-  - nuget restoretrue
+  - nuget restore
