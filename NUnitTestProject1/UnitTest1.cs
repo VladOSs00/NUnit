@@ -33,16 +33,6 @@ namespace Tests
                 throw new System.Exception("Такой детали не существует!");
             }
 
-           
-           
-
-            /*
-            if (!Services.ContainsKey(name))
-            {
-                throw new System.Exception("Такой детали не существует!");    
-            }
-            */
-
             var service = Services[name];
             int price = service.Price * count;
 
