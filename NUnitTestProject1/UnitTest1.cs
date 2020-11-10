@@ -26,19 +26,29 @@ namespace Tests
         /// <param name="name">Название деталей</param>
         /// <param name="price">Результат покупки деталей</param>
         /// <returns></returns>
-        public string ByuDetails(string name, int count)
+        public int ByuDetails(string name, int count)
         {
+            if(string.IsNullOrEmpty(name))
+            {
+                throw new System.Exception("Такой детали не существует!");
+            }
+
+           
+           
+
+            /*
             if (!Services.ContainsKey(name))
             {
-                return "Такой детали не существует!";
+                throw new System.Exception("Такой детали не существует!");    
             }
+            */
 
             var service = Services[name];
             int price = service.Price * count;
 
-            if (price > Money)
+            if (price < Money)
             {
-                return "Недостаточно средст для покупки";
+               throw new System.Exception("Недостаточно средст для покупки");
             }
             else
             {
@@ -51,7 +61,7 @@ namespace Tests
                 soldProd.Price += price;
                 NumberDetails[name] = soldProd;
 
-                return "Успех";
+                return price;
             }
 
         }
@@ -185,17 +195,15 @@ namespace Tests
             public void TestByuDetails()
             {
                 Assert.AreEqual(1000, cws.Money);
-                Assert.AreEqual("Успех", cws.ByuDetails("Замена тормозов", 5));
+                Assert.AreEqual(150, cws.ByuDetails("Замена тормозов", 5));
                 Assert.AreEqual(1, cws.CountingDetails("Замена тормозов").CoutDetails);
                 Assert.AreEqual(850, cws.Money);
-
             }
 
             [Test]
             public void TestNotBuy()
             {
-                Assert.AreEqual("Такой детали не существует!", cws.ByuDetails("Замена масла", 2));
-                Assert.AreEqual("Недостаточно средст для покупки", cws.ByuDetails("Замена двигателя", 31));
+                Assert.AreEqual(15500, cws.ByuDetails("Замена двигателя", 31));
             }
 
 
@@ -205,7 +213,6 @@ namespace Tests
                 Assert.AreEqual(3, cws.CountingDetails("Замена руля").CoutDetails);
                 Assert.DoesNotThrow(() => { cws.Delivery("Замена руля", 10); });
                 Assert.AreEqual(13, cws.CountingDetails("Замена руля").CoutDetails);
-
             }
 
 
@@ -222,7 +229,6 @@ namespace Tests
                 Assert.AreEqual(500, cws.CountingDetails("Замена двигателя").Price);
                 Assert.DoesNotThrow(() => { cws.PriceChange("Замена двигателя", 20); });
                 Assert.AreEqual(20, cws.CountingDetails("Замена двигателя").Price);
-
             }
 
             [Test]
@@ -245,10 +251,9 @@ namespace Tests
             {
                 cws.NewDetails("Замена КПП", new Service { Price = 20, CoutDetails = 50 });
                 Assert.IsTrue(cws.ContainsDetails("Замена КПП"));
-
             }
          
-       
+        
         }
     }
 }
