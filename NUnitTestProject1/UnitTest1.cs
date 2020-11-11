@@ -194,6 +194,7 @@ namespace Tests
             public void TestNotBuy()
             {
                 Assert.AreEqual(15500, cws.ByuDetails("Замена двигателя", 31));
+              //  
             }
 
 
@@ -224,15 +225,15 @@ namespace Tests
             [Test]
             public void TestCountingMoney()
             {
-                cws.ByuDetails("Замена фар", 5);
-                Assert.AreEqual(500, cws.CountingMoney("Замена фар"));
+                cws.ByuDetails("Замена фар", 15500);
+                Assert.AreEqual(1550000, cws.CountingMoney("Замена фар"));
             }
 
             [Test]
             public void TestCountingSoldPart()
             {
-                cws.ByuDetails("Замена фар", 5);
-                Assert.AreEqual(5, cws.CountingSoldPart("Замена фар"));
+                cws.ByuDetails("Замена фар", 15500);
+                Assert.AreEqual(15500, cws.CountingSoldPart("Замена фар"));
             }
 
 
