@@ -36,7 +36,7 @@ namespace Tests
             var service = Services[name];
             int price = service.Price * count;
 
-            if (price < Money)
+            if (price > Money)
             {
                throw new System.Exception("Недостаточно средст для покупки");
             }

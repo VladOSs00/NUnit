@@ -1,0 +1,10 @@
+os: Visual Studio 2019
+
+platform: Any CPU
+
+configuration:
+ - Debug
+ - Release
+
+before_build:
+ - nuget restore
