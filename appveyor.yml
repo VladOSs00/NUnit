@@ -1,10 +1,10 @@
-os: Visual Studio 2019
+ОС: Visual Studio 2019
 
-platform: Any CPU
+платформа: любой процессор
 
-configuration:
- - Debug
- - Release
+конфигурация:
+ - Отладка
+ - Отпустите
 
 before_build:
- - nuget restore
+ - восстановление nuget
