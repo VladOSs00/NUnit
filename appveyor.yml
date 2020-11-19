@@ -1,6 +1,6 @@
 os: Visual Studio 2019
 
-платформа: любой процессор
+platform: Any CPU
 
 configuration:
  - Debug
